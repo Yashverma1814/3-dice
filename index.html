@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role dice</title>
+</head>
+<style>
+    .members{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        text-align: center;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: larger;
+    }
+    #roll{
+        text-align: center;
+    }
+</style>
+<body>
+    <div class="members">
+        <div>Member A</div>
+        <div>Member B</div>
+        <div>Member C</div> 
+        <div id="member-1">
+            0
+        </div>
+        <div id="member-2">
+            0
+        </div>
+        <div id="member-3">
+            0
+        </div>
+    </div>
+    <br><br>
+    <center>
+        <button id="roll" onclick="dice()">Roll the dice</button>
+        <br><br><br>
+        <div id="winner"></div>
+    </center>
+</body>
+<script>
+    var winner = document.getElementById("winner");
+    var a = document.getElementById("member-1");
+    var b = document.getElementById("member-2");
+    var c = document.getElementById("member-3");
+    function dice(){
+        var mem1 = Math.floor(Math.random() * 6) + 1;
+        var mem2 = Math.floor(Math.random() * 6) + 1;
+        var mem3 = Math.floor(Math.random() * 6) + 1;
+        var arr = [1,2,3,4,5,6]
+        
+        a.textContent = mem1;
+        b.textContent = mem2;
+        c.textContent = mem3;
+        if(mem1>mem2){
+            if(mem1>mem3){
+                winner.textContent = "MEMBER A POINTS "+mem1; 
+            }
+        }
+        else if(mem2>mem1){
+            if(mem2>mem3){
+                winner.textContent = "MEMBER B POINTS "+mem2; 
+            }
+        }
+        else if(mem3>mem1){
+            if(mem3>mem2){
+                winner.textContent = "MEMBER C POINTS "+mem3; 
+            }
+        }
+    }
+</script>
+</html>
